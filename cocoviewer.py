@@ -212,7 +212,7 @@ def draw_masks(draw, objects, obj_categories, ignore, alpha):
             if isinstance(m, list):
                 for m_ in m:
                     if m_:
-                        draw.polygon(m_, outline=fill, fill=fill)
+                        draw.polygon([tuple(i) for i in m_], outline=fill, fill=fill)
             # RLE mask for collection of objects (iscrowd=1)
             elif isinstance(m, dict) and objects[i]["iscrowd"]:
                 mask = rle_to_mask(m["counts"][:-1], m["size"][0], m["size"][1])
